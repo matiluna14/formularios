@@ -1,0 +1,124 @@
+<h2>Validaciones Reactivas</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+
+        <form autocomplete="off" (ngSubmit)="submitFormulario()" [formGroup]="miFormulario">
+
+            <!--Nombre-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                    class="form-control"
+                    placeholder="Nombre del usuario"
+                    formControlName="nombre">
+
+                    <span class="form-text text-danger"
+                          *ngIf="campoValido('nombre')">
+                        Debe ser en fomato de nombre y apellido
+                    </span>
+                </div>
+
+            </div>
+
+            <!--Email-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email"
+                    class="form-control"
+                    placeholder="Email del usuario"
+                    formControlName="email">
+
+                    <span class="form-text text-danger"
+                          *ngIf="campoValido('email')">
+                        {{emailErrorsMsg}}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!--Username-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Username</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                    class="form-control"
+                    placeholder="Username"
+                    formControlName="username">
+
+
+                    <span class="form-text text-danger"
+                          *ngIf="campoValido('username')">
+                        El username no puede ser wiltord
+                    </span>
+                </div>
+
+                
+
+            </div>
+
+
+
+            <!--Password-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    formControlName="password">
+
+
+                    <span class="form-text text-danger"
+                          *ngIf="campoValido('password')">
+                        La contraseña debe ser de 6 caracteres o más
+                    </span>
+                </div>
+
+            </div>
+
+
+
+            <!--Confirmar-->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Confirmar</label>
+                <div class="col-sm-9">
+                    <input type="password"
+                    class="form-control"
+                    placeholder="Confirmar el password"
+                    formControlName="password2">
+
+                    <span class="form-text text-danger"
+                    *ngIf="campoValido('password2')">
+                    Las contraseñas deben ser iguales
+                   </span>
+                </div>
+
+            </div>
+
+
+
+            <!--Boton Guardar-->
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary float-end"
+                            type="submit">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+
+<h3>form valid: {{miFormulario.valid}}</h3>
+
